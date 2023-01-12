@@ -52,10 +52,10 @@ model Update {
 
 model UpdatePoint {
   id        String   @id @default(uuid())
-  createdAt DateTime @default(now())product
+  createdAt DateTime @default(now())
   updatedAt DateTime
 
-  name        String @db.VarChar(255)product
+  name        String @db.VarChar(255)
   description String
 
   updateId String
