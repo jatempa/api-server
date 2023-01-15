@@ -5,28 +5,30 @@ const router = Router();
 /**
  * Product
  */
-router.get('/product', () => {});
-router.get('/product/:id', () => {});
-router.put('/product/:id', () => {});
-router.post('/product', () => {});
-router.delete('/product/:id', () => {});
+router.get('/product', (req, res) => {
+  res.json({ message: 'hello world' });
+});
+router.get('/product/:id', (req, res) => {});
+router.put('/product/:id', (req, res) => {});
+router.post('/product', (req, res) => {});
+router.delete('/product/:id', (req, res) => {});
 
 /**
  * Update
  */
-router.get('/update', () => {});
-router.get('/update/:id', () => {});
-router.put('/update/:id', () => {});
-router.post('/update', () => {});
-router.delete('/update/:id', () => {});
+router.get('/update', (req, res) => {});
+router.get('/update/:id', (req, res) => {});
+router.put('/update/:id', (req, res) => {});
+router.post('/update', (req, res) => {});
+router.delete('/update/:id', (req, res) => {});
 
 /**
  * Update Point
  */
-router.get('/updatepoint', () => {});
-router.get('/updatepoint/:id', () => {});
-router.put('/updatepoint/:id', () => {});
-router.post('/updatepoint', () => {});
-router.delete('/updatepoint/:id', () => {});
+router.get('/updatepoint', (req, res) => {});
+router.get('/updatepoint/:id', (req, res) => {});
+router.put('/updatepoint/:id', (req, res) => {});
+router.post('/updatepoint', (req, res) => {});
+router.delete('/updatepoint/:id', (req, res) => {});
 
 export default router;
