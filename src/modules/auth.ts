@@ -1,7 +1,9 @@
-import jwt from 'jsonwebtoken';
+import jwt, { Secret, JwtPayload } from 'jsonwebtoken';
 import * as bcrypt from 'bcrypt';
 import { NextFunction, Request, Response } from 'express';
 import { User } from '@prisma/client';
+
+const SECRET_KEY: Secret = process.env.JWT_SECRET as string;
 
 export const comparePasswords = (password: string, hash: string) => {
   return bcrypt.compare(password, hash);
@@ -14,7 +16,7 @@ export const hashPassword = (password: string) => {
 export const createJWT = (user: User | null) => {
   const token = jwt.sign(
     { id: user?.id, username: user?.username },
-    process.env.JWT_SECRET as string
+    SECRET_KEY
   );
   return token;
 };
@@ -37,8 +39,8 @@ export const protect = (req: Request, res: Response, next: NextFunction) => {
   }
 
   try {
-    const payload = jwt.verify(token, process.env.JWT_SECRET as string);
-    // req.user = payload;
+    const payload = jwt.verify(token, SECRET_KEY) as JwtPayload;
+    req.user = payload;
     next();
     return;
   } catch (e) {
